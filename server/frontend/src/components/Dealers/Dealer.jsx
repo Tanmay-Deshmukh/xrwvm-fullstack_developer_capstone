@@ -32,7 +32,8 @@ const Dealer = () => {
     
     if(retobj.status === 200) {
       let dealerobjs = Array.from(retobj.dealer)
-      setDealer(dealerobjs[0])
+      if (dealerobjs.length == 0) setDealer(retobj.dealer);
+      else setDealer(dealerobjs[0]);
     }
   }
 
@@ -40,7 +41,14 @@ const Dealer = () => {
     const res = await fetch(reviews_url, {
       method: "GET"
     });
+
+    console.log("get_reviews res:"); // DEBUG
+    console.log(res); // DEBUG
+
     const retobj = await res.json();
+
+    console.log("get_reviews retobj:"); // DEBUG
+    console.log(retobj); // DEBUG
     
     if(retobj.status === 200) {
       if(retobj.reviews.length > 0){
