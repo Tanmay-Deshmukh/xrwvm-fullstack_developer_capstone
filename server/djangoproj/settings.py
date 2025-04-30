@@ -28,16 +28,20 @@ SECRET_KEY =\
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+# I hate the linter, I need this as a prefix so it doesn't get mad
+# at the lines being too long
+a = 'https://tanmayd-8000.theia'
+
 ALLOWED_HOSTS = [
-    'localhost', 
-    'https://tanmayd-8000.theianext-0-labs-prod-misc-tools-us-east-0.proxy.cognitiveclass.ai', 
-    'https://tanmayd-8000.theiadockernext-1-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai',
-    'https://tanmayd-8000.theiadockernext-0-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai'
+    'localhost',
+    a + 'next-0-labs-prod-misc-tools-us-east-0.proxy.cognitiveclass.ai',
+    a + 'dockernext-1-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai',
+    a + 'dockernext-0-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai'
 ]
 CSRF_TRUSTED_ORIGINS = [
-    'https://tanmayd-8000.theianext-0-labs-prod-misc-tools-us-east-0.proxy.cognitiveclass.ai',
-    'https://tanmayd-8000.theiadockernext-1-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai',
-    'https://tanmayd-8000.theiadockernext-0-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai'
+    a + 'next-0-labs-prod-misc-tools-us-east-0.proxy.cognitiveclass.ai',
+    a + 'dockernext-1-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai',
+    a + 'dockernext-0-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai'
 ]
 
 REST_FRAMEWORK = {
@@ -100,22 +104,27 @@ DATABASES = {
     }
 }
 
+# Still hate the linter, need this prefix so it doesn't mark me
+# for the line being too long
+
+v = 'django.contrib.auth.password_validation.'
+
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME':
-        'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        v + 'UserAttributeSimilarityValidator',
     },
     {
         'NAME':
-        'django.contrib.auth.password_validation.MinimumLengthValidator',
+        v + 'MinimumLengthValidator',
     },
     {
         'NAME':
-        'django.contrib.auth.password_validation.CommonPasswordValidator',
+        v + 'CommonPasswordValidator',
     },
     {
         'NAME':
-        'django.contrib.auth.password_validation.NumericPasswordValidator',
+        v + 'NumericPasswordValidator',
     },
 ]
 
@@ -152,4 +161,3 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'frontend/build'),
     os.path.join(BASE_DIR, 'frontend/build/static'),
 ]
-
